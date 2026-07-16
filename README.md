@@ -29,7 +29,7 @@ While building this project, I practiced:
 ## 📸 Screenshot
 ![alt text](img/notes-app.png)
 
-(Add screenshot here later)
+
 
 ## 🔮 Future Improvements
 
