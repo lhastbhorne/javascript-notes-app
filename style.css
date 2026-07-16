@@ -90,10 +90,10 @@ li {
 }
 
 li button {
-  background: #ff4757;
+  background: #f76e7a;
   margin: 0;
 }
 
 li button:hover {
-  background: #d63031;
+  background: #f23838;
 }
