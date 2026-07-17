@@ -13,6 +13,7 @@ A simple notes application built with HTML, CSS, and JavaScript.
 - ✅ Confirmation before deleting
 - ✅ Persistent storage using localStorage
 - ✅ Unique IDs for each note
+- ✅ 🌙 Dark mode
 
 ## 🛠️ Technologies Used
 
@@ -38,7 +39,7 @@ While building this project, I practiced:
 
 ## 🚀 Future Improvements
 
-- 🌙 Dark mode
+
 - 📌 Pin important notes
 - 🏷️ Add note categories/tags
 - 📅 Show creation & last edited date
