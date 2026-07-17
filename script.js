@@ -5,11 +5,25 @@ const counter = document.getElementById("counter");
 const search = document.getElementById("search");
 
 let notes = [];
+let editingNoteId = null;
+
+function saveNotes() {
+  localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+function getNotes() {
+  const savedNotes = localStorage.getItem("notes");
+
+  if (savedNotes) {
+    notes = JSON.parse(savedNotes);
+    // what should happen here?
+  }
+}
 
 function renderNotes(notesToDisplay = notes) {
   notesList.innerHTML = "";
 
-  notesToDisplay.forEach((note, index) => {
+  notesToDisplay.forEach((note) => {
     const li = document.createElement("li");
 
     const deleteBtn = document.createElement("button");
@@ -24,22 +38,22 @@ function renderNotes(notesToDisplay = notes) {
 
     deleteBtn.addEventListener("click", () => {
       if (confirm("Delete this note?")) {
-        notes = notes.filter(function(currentNote){
-          return currentNote.id !== note.id
-        })
+        notes = notes.filter(function (currentNote) {
+          return currentNote.id !== note.id;
+        });
       }
 
-      search.value = ""
+      search.value = "";
+      saveNotes();
       renderNotes();
     });
 
     editBtn.addEventListener("click", () => {
+      editingNoteId = note.id;
       noteInput.value = note.text;
-      let editIndex = null;
-      editIndex = index;
 
-      notes.splice(index, 1);
-
+      addNote.textContent = "Update Note";
+      noteInput.style.border = "2px solid orange";
       renderNotes();
     });
 
@@ -71,13 +85,31 @@ addNote.addEventListener("click", () => {
     alert("Write something first");
     return;
   }
-
-  notes.push({
-    id: Date.now(),
-    text: noteInput.value,
-  });
+  if (editingNoteId === null) {
+    // Add a new note
+    notes.push({
+      id: Date.now(),
+      text: noteInput.value.trim(),
+    });
+    saveNotes();
+  } else {
+    // Update the existing note
+    const noteToEdit = notes.find(function (note) {
+      return note.id === editingNoteId;
+    });
+    if (noteToEdit) {
+      noteToEdit.text = noteInput.value.trim();
+      saveNotes()
+    }
+    editingNoteId = null;
+    addNote.textContent = "Add Note";
+    noteInput.style.border = "";
+  }
 
   noteInput.value = "";
   counter.textContent = `${noteInput.value.length}/200`;
   renderNotes();
 });
+
+getNotes();
+renderNotes();
