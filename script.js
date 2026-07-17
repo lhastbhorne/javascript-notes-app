@@ -3,9 +3,34 @@ const addNote = document.getElementById("addNote");
 const notesList = document.getElementById("notesList");
 const counter = document.getElementById("counter");
 const search = document.getElementById("search");
+const themeBtn = document.getElementById("themeBtn");
 
 let notes = [];
 let editingNoteId = null;
+
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if (document.body.classList.contains("dark")) {
+    themeBtn.textContent = "☀️ Light Mode";
+  } else {
+    themeBtn.textContent = "🌙 Dark Mode"
+  }
+
+  saveTheme()
+});
+
+function saveTheme() {
+  localStorage.setItem("theme", document.body.className);
+}
+
+function getTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    themeBtn.textContent = "☀️ Light Mode";
+  }
+}
 
 function saveNotes() {
   localStorage.setItem("notes", JSON.stringify(notes));
@@ -99,7 +124,7 @@ addNote.addEventListener("click", () => {
     });
     if (noteToEdit) {
       noteToEdit.text = noteInput.value.trim();
-      saveNotes()
+      saveNotes();
     }
     editingNoteId = null;
     addNote.textContent = "Add Note";
@@ -113,3 +138,4 @@ addNote.addEventListener("click", () => {
 
 getNotes();
 renderNotes();
+getTheme()

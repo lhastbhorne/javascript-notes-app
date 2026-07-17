@@ -8,19 +8,25 @@
   </head>
 
   <body>
-    <h1>My Notes</h1>
+    <div class="header">
+      <h1>My Notes</h1>
+      <button id="themeBtn">🌙 Dark Mode</button>
+    </div>
+    
 
     <div class="container">
       <textarea id="noteInput" placeholder="Write your note here..." maxlength="200"></textarea>
 
+       <p id="counter">0/200</p>
+       
       <button id="addNote">Add Note</button>
-
-      <p id="counter">0/200</p>
 
       <input type="text" id="search" placeholder="Search notes..." />
 
       <div id="notesList"></div>
     </div>
+
+    
 
     <script src="script.js"></script>
   </body>

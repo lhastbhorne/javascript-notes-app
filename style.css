@@ -2,18 +2,53 @@
   box-sizing: border-box;
 }
 
+:root {
+  --background: linear-gradient(135deg, #667eea, #764ba2);
+  --button-hover: #5563c1;
+  --card: white;
+  --heading: white;
+  --text: #222;
+  --button: #667eea;
+  --input: white;
+  --border: #ddd;
+  --danger: #f76e7a;
+--danger-hover: #f23838;
+}
+
+body.dark {
+  --background: linear-gradient(135deg, #1f1c2c, #3a1c71);
+  --button-hover: #8b5cc7;
+  --card: #242424;
+  --heading: white;
+  --text: white;
+  --button: #764ba2;
+  --input: #333;
+  --border: #555;
+}
+
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--background);
+  color: var(--text);
   min-height: 100vh;
   margin: 0;
   padding: 40px 20px;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#themeBtn {
+  justify-self: center;
+  align-self: center;
+}
+
 .container {
   max-width: 700px;
   margin: auto;
-  background: white;
+  background: var(--card);
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -21,7 +56,7 @@ body {
 
 h1 {
   text-align: center;
-  color: white;
+  color: var(--heading);
   font-size: 40px;
   margin-bottom: 30px;
 }
@@ -32,10 +67,16 @@ textarea {
   resize: none;
   padding: 15px;
   border-radius: 12px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border);
   font-size: 16px;
   outline: none;
   transition: 0.3s;
+}
+
+textarea,
+input {
+  background: var(--input);
+  color: var(--text);
 }
 
 textarea:focus {
@@ -43,7 +84,7 @@ textarea:focus {
 }
 
 button {
-  background: #667eea;
+  background: var(--button);
   color: white;
   border: none;
   padding: 12px 20px;
@@ -55,7 +96,7 @@ button {
 }
 
 button:hover {
-  background: #5563c1;
+  background: var(--button-hover);
   transform: translateY(-2px);
 }
 
@@ -69,7 +110,7 @@ button:hover {
   padding: 14px;
   margin-top: 20px;
   border-radius: 10px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border);
   font-size: 16px;
 }
 
@@ -78,7 +119,7 @@ ul {
 }
 
 li {
-  background: #f8f9fa;
+  background: var(--card);
   margin-top: 15px;
   padding: 15px;
   border-radius: 12px;
@@ -90,10 +131,15 @@ li {
 }
 
 li button {
-  background: #f76e7a;
+  background: var(--danger);
   margin: 0;
 }
 
+body.dark button {
+  background: #764ba2;
+  color: white;
+}
+
 li button:hover {
-  background: #f23838;
+  background: var(--danger-hover);
 }

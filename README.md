@@ -4,10 +4,15 @@ A simple notes application built with HTML, CSS, and JavaScript.
 
 ## 🚀 Features
 
-- Add notes
-- Display notes
-- Delete notes
-- Clean and responsive UI
+- ✅ Add notes
+- ✅Display notes
+- ✅ Delete notes
+- ✅ Clean and responsive UI
+- ✅ Search notes
+- ✅ Character counter (0/200)
+- ✅ Confirmation before deleting
+- ✅ Persistent storage using localStorage
+- ✅ Unique IDs for each note
 
 ## 🛠️ Technologies Used
 
@@ -31,10 +36,11 @@ While building this project, I practiced:
 
 
 
-## 🔮 Future Improvements
+## 🚀 Future Improvements
 
-- Edit notes
-- Search notes
-- Character counter
-- Save notes with localStorage
-- Dark mode
+- 🌙 Dark mode
+- 📌 Pin important notes
+- 🏷️ Add note categories/tags
+- 📅 Show creation & last edited date
+- 📤 Export notes to a text file
+- ☁️ Sync notes with a backend/database
